@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/buildingFragment">
+
+    <fragment
+        android:id="@+id/buildingFragment"
+        android:name="com.apisod.inventoryar.presentation.building.BuildingFragment"
+        android:label="Buildings">
+
+        <action
+            android:id="@+id/action_buildingFragment_to_roomFragment"
+            app:destination="@id/roomFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/roomFragment"
+        android:name="com.apisod.inventoryar.presentation.room.RoomFragment"
+        android:label="Rooms">
+
+        <action
+            android:id="@+id/action_roomFragment_to_inventoryFragment"
+            app:destination="@id/inventoryFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/inventoryFragment"
+        android:name="com.apisod.inventoryar.presentation.inventory.InventoryFragment"
+        android:label="Inventory">
+
+        <action
+            android:id="@+id/action_inventoryFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.apisod.inventoryar.presentation.ar.CameraFragment"
+        android:label="Camera"/>
+</navigation>

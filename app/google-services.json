@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "725100930386",
+    "project_id": "apisod-ac7c0",
+    "storage_bucket": "apisod-ac7c0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725100930386:android:21b08736a169b6b6cdc68b",
+        "android_client_info": {
+          "package_name": "com.apisod.inventoryar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtAOZcdIW0PkF4AlfFNaIECh_kW9H_2_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725100930386:android:a5789f23cd40b52fcdc68b",
+        "android_client_info": {
+          "package_name": "com.apisod.muzzlecapture"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtAOZcdIW0PkF4AlfFNaIECh_kW9H_2_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
