@@ -1,29 +1,36 @@
 package com.apisod.inventoryar
 
-import android.graphics.Color
 import android.os.Bundle
-
-import androidx.activity.enableEdgeToEdge
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.apisod.inventoryar.common.CentralizedActivity
-
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : CentralizedActivity() {
+class MainActivity :
+    CentralizedActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setupSystemBars()
-        setContentView(R.layout.activity_main)
+    private lateinit var bottomNavigation:
+            BottomNavigationView
+
+    override fun onCreate(
+        savedInstanceState: Bundle?
+    ) {
+        super.onCreate(
+            savedInstanceState
+        )
+
+        setContentView(
+            R.layout.activity_main
+        )
+
+        initViews()
     }
 
-    private fun setupSystemBars() {
-        WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.statusBarColor = Color.BLACK
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = false
+    private fun initViews() {
+        bottomNavigation =
+            findViewById(
+                R.id.bottomNavigation
+            )
     }
+
 }

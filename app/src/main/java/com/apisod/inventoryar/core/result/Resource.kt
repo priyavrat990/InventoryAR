@@ -1,13 +1,5 @@
-package com.apisod.inventoryar.core.resource
+package com.apisod.inventoryar.core.result
 
-/*
-* WHY THIS EXISTS
-    * Every:
-        * API response
-        * Firebase response
-        * Room response
-        * TensorFlow result
-        * will use this wrapper.*/
 sealed class Resource<out T> {
 
     data class Success<T>(

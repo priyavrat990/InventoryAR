@@ -12,36 +12,69 @@ import com.google.firebase.storage.FirebaseStorage
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class GlobalApplication : Application() {
+class GlobalApplication :
+    Application() {
 
     companion object {
 
-        private lateinit var instance: GlobalApplication
+        private lateinit var instance:
+                GlobalApplication
 
-        lateinit var firebaseFirestore: FirebaseFirestore
-            private set
+        private lateinit var firebaseFirestore:
+                FirebaseFirestore
 
-        lateinit var firebaseStorage: FirebaseStorage
-            private set
+        private lateinit var firebaseStorage:
+                FirebaseStorage
 
-        private var sharedPreferences: SharedPreferences? = null
+        private var sharedPreferences:
+                SharedPreferences? = null
 
-        fun getInstance(): GlobalApplication {
+        fun getInstance():
+                GlobalApplication {
+
             return instance
         }
 
-        fun getSharedPrefs(context: Context): SharedPreferences {
+        fun provideFirebaseFirestore():
+                FirebaseFirestore {
+
+            return firebaseFirestore
+        }
+
+        fun provideFirebaseStorage():
+                FirebaseStorage {
+
+            return firebaseStorage
+        }
+
+        fun getSharedPrefs(
+            context: Context
+        ): SharedPreferences {
+
             if (sharedPreferences == null) {
-                sharedPreferences = context.getSharedPreferences(
-                    Constants.MYPREF,
-                    Context.MODE_PRIVATE
-                )
+
+                sharedPreferences =
+                    context.getSharedPreferences(
+                        Constants.MYPREF,
+                        Context.MODE_PRIVATE
+                    )
             }
+
             return sharedPreferences!!
         }
     }
 
+    override fun attachBaseContext(
+        base: Context
+    ) {
+
+        super.attachBaseContext(base)
+
+        MultiDex.install(this)
+    }
+
     override fun onCreate() {
+
         super.onCreate()
 
         instance = this
@@ -49,20 +82,35 @@ class GlobalApplication : Application() {
         initializeFirebase()
     }
 
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
-    }
-
     private fun initializeFirebase() {
-        FirebaseApp.initializeApp(this)
 
-        firebaseFirestore = FirebaseFirestore.getInstance().apply {
-            firestoreSettings = FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .build()
+        try {
+
+            FirebaseApp.initializeApp(
+                this
+            )
+
+            firebaseFirestore =
+                FirebaseFirestore
+                    .getInstance()
+
+            val settings =
+                FirebaseFirestoreSettings
+                    .Builder()
+                    .setPersistenceEnabled(true)
+                    .build()
+
+            firebaseFirestore
+                .firestoreSettings =
+                settings
+
+            firebaseStorage =
+                FirebaseStorage
+                    .getInstance()
+
+        } catch (e: Exception) {
+
+            e.printStackTrace()
         }
-
-        firebaseStorage = FirebaseStorage.getInstance()
     }
 }
